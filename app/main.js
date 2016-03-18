@@ -14,10 +14,12 @@ var number;
 // Some example functions, to get you started. You can change, delete, add to
 // these however you like!
 // =============================================================================
-
+  var randomNumber = Math.random()*100;
+  var numberValue = Math.floor(randomNumber);
 function generateNumber() {
-  return 5;
+  return numberValue;
 };
+  console.log(numberValue);
 
 function clearInput() {
   userInputEl.value = '';
@@ -43,11 +45,19 @@ function guessingGame(userInput) {
       number = generateNumber();
       submitBtnEl.value = "Submit"
     }
-    msgDisplayEl.innerHTML = "Please guess the number 5"
-  } else if (userInput === "5") {
-    msgDisplayEl.innerHTML = "You guessed it! Great job!"
+    msgDisplayEl.innerHTML = "Please guess a number between 0 -100"
+  } else if (userInput < numberValue) {
+    msgDisplayEl.innerHTML = "Guess Higher"
+    clearInput();
+  } else if (userInput > numberValue){
+    msgDisplayEl.innerHTML = "Guess Lower"
+    clearInput();
+  } else {
+    (userInput === numberValue )
+    msgDisplayEl.innerHTML = "You did it!"
     clearInput();
     submitBtnEl.value = "Play Again"
-  }
+
+  } 
 
 }
